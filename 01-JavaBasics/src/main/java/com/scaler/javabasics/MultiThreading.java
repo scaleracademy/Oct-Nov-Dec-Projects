@@ -28,6 +28,8 @@ public class MultiThreading {
         executor.execute(r);
         executor.execute(r);
         executor.execute(r);
+
+        // Q2: Print odd nos on thread-1 and even on thread-2 but sequentially
     }
 
 
