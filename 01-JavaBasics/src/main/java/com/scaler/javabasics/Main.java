@@ -11,7 +11,6 @@ public class Main {
 //        System.out.println(
 //                downloader.getWebpageSource()
 //        );
-
         var mt = new MultiThreading();
         mt.runAllThreads();
     }
