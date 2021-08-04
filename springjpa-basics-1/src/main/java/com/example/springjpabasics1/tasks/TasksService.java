@@ -2,7 +2,9 @@ package com.example.springjpabasics1.tasks;
 
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class TasksService {
@@ -24,19 +26,29 @@ public class TasksService {
     }
 
     TaskEntity getTaskById(int index) {
-        return tasksRepository.getById(index); // TODO: handle invalid index
+        try {
+            return tasksRepository.findById(index).get();
+        } catch (EntityNotFoundException | NoSuchElementException e) {
+            throw new NoSuchTaskException();
+        }
     }
 
     TaskEntity setTaskDone(int index, Boolean done) {
-        var task = tasksRepository.getById(index);
+        var task = getTaskById(index);
         task.setDone(done);
         return tasksRepository.save(task);
     }
 
     boolean deleteTask(int index) {
         tasksRepository.delete(
-                tasksRepository.getById(index)
+                getTaskById(index)
         );
-        return true; // TODO: handle invalid index and return false
+        return true;
+    }
+
+    static class NoSuchTaskException extends RuntimeException {
+        public NoSuchTaskException() {
+            super("No such task exists");
+        }
     }
 }
