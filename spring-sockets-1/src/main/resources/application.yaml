@@ -1,2 +1,2 @@
 server:
-  port: 4224
+  port: ${PORT:4224}
