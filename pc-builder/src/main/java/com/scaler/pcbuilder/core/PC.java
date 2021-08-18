@@ -1,61 +1,70 @@
 package com.scaler.pcbuilder.core;
 
-import com.scaler.pcbuilder.core.components.Cabinet;
-import com.scaler.pcbuilder.core.components.KVM;
-import com.scaler.pcbuilder.core.components.Peripheral;
+import com.scaler.pcbuilder.core.systems.Tower;
+import com.scaler.pcbuilder.core.systems.KVM;
+import com.scaler.pcbuilder.core.peripherals.Peripheral;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@AllArgsConstructor
 public class PC {
 
     private PC() {
     }
 
-    Cabinet cabinet;
+    Tower tower;
     KVM kvm;
     List<Peripheral> peripherals;
 
     public static class Builder {
-        private PC pc;
+        Tower tower;
+        KVM kvm;
+        List<Peripheral> peripherals;
 
-        public Builder() {
-            pc = new PC();
-        }
+        public Builder withTower(Tower tower) {
 
-        public Builder setCabinet(Cabinet cabinet) {
-
-            if (!cabinet.fullyConfigured()) {
-                throw new IllegalStateException("Trying to add a cabinet not fully configured");
+            if (!tower.fullyConfigured()) {
+                throw new IllegalStateException("Trying to add a tower not fully configured");
             }
-            pc.cabinet = cabinet;
+            this.tower = tower;
             return this;
         }
 
-        public Builder setKVM(KVM kvm) {
+        public Builder withKVM(KVM kvm) {
             if (!kvm.fullyConfigured()) {
                 throw new IllegalStateException("Trying to add a kvm not fully configured");
             }
 
-            pc.kvm = kvm;
+            this.kvm = kvm;
             return this;
         }
 
         public Builder addPeripherals(Peripheral... peripherals) {
 
-            if (pc.peripherals == null) {
-                pc.peripherals = new ArrayList<>();
+            if (this.peripherals == null) {
+                this.peripherals = new ArrayList<>();
             }
-            pc.peripherals.addAll(Arrays.asList(peripherals));
+            this.peripherals.addAll(Arrays.asList(peripherals));
+            return this;
+        }
+
+        public Builder clearPeripherals() {
+            if (this.peripherals != null) {
+                this.peripherals.clear();
+            }
             return this;
         }
 
         public PC build() {
-            // TODO: check cabinet exists
+            var pc = new PC(tower, kvm, peripherals);
+            // TODO: check tower exists
             // TODO: check kvm exists
-            // TODO: cabinet has all ports that KVM needs
-            // TODO: cabinet has ports required for the peripherals
+            // TODO: tower has all ports that KVM needs
+            // TODO: tower has ports required for the peripherals
 
             return pc;
         }

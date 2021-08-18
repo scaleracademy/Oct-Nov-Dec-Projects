@@ -1,6 +1,6 @@
-package com.scaler.pcbuilder.core.components;
+package com.scaler.pcbuilder.core.systems;
 
-public class Cabinet {
+public class Tower {
 
     public boolean fullyConfigured() {
         /* TODO: add logic to check for minimum components
@@ -16,15 +16,15 @@ public class Cabinet {
     }
 
     public static class Builder {
-        private Cabinet cabinet;
+        private Tower tower;
 
         // TODO: installing motherboard to be mandatory first step
         //          -> replacing motherboard won't be possible
         //          -> all other installations will first check if mobo exists
 
-        public Cabinet build() {
+        public Tower build() {
             // TODO: check fully configured logic here.
-            return cabinet;
+            return tower;
         }
     }
 }

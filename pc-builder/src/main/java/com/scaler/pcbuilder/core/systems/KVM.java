@@ -1,4 +1,4 @@
-package com.scaler.pcbuilder.core.components;
+package com.scaler.pcbuilder.core.systems;
 
 public class KVM {
 
