@@ -41,9 +41,19 @@ public class Tower {
         }
 
         public Tower build() {
+            /*
+                // TODO:
+                    1. check PSU power >= motherboard + cabinet power requirement
+             */
             if (cabinet == null) throw new IllegalStateException("Cannot build tower without a cabinet");
             if (motherBoard == null) throw new IllegalStateException("Cannot build tower without a motherboard");
             if (psu == null) throw new IllegalStateException("Cannot build tower without a PSU");
+
+
+            if (cabinet.formFactor().size < motherBoard.formFactor().size) {
+                throw new IllegalStateException("Cannot fit bigger motherboard in smaller cabinet");
+            }
+
             Tower tower = new Tower(motherBoard, cabinet, psu);
             return tower;
         }
