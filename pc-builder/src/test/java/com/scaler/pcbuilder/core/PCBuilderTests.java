@@ -1,6 +1,7 @@
 package com.scaler.pcbuilder.core;
 
 
+import com.scaler.pcbuilder.core.compatibilty.FormFactors;
 import com.scaler.pcbuilder.core.components.Cabinet;
 import com.scaler.pcbuilder.core.components.MotherBoard;
 import com.scaler.pcbuilder.core.components.PSU;
@@ -17,8 +18,8 @@ public class PCBuilderTests {
         var pcBuilder = new PC.Builder()
                 .withKVM(new KVM.Builder().withKeyboard(new Keyboard()).withDisplay(new Display()).build())
                 .withTower(new Tower.Builder()
-                        .withCabinet(new Cabinet())
-                        .withMotherBoard(new MotherBoard())
+                        .withCabinet(Cabinet.create(FormFactors.ATX))
+                        .withMotherBoard(MotherBoard.create(FormFactors.ATX))
                         .withPsu(new PSU())
                         .build()
                 );
