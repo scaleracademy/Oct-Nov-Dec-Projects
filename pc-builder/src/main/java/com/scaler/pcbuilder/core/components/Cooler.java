@@ -1,4 +1,6 @@
 package com.scaler.pcbuilder.core.components;
 
-public interface Cooler {
+import com.scaler.pcbuilder.core.compatibilty.PowerConsumer;
+
+public interface Cooler extends PowerConsumer {
 }

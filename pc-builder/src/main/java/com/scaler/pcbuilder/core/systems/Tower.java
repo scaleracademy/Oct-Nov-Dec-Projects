@@ -41,10 +41,7 @@ public class Tower {
         }
 
         public Tower build() {
-            /*
-                // TODO:
-                    1. check PSU power >= motherboard + cabinet power requirement
-             */
+
             if (cabinet == null) throw new IllegalStateException("Cannot build tower without a cabinet");
             if (motherBoard == null) throw new IllegalStateException("Cannot build tower without a motherboard");
             if (psu == null) throw new IllegalStateException("Cannot build tower without a PSU");
@@ -54,7 +51,7 @@ public class Tower {
                 throw new IllegalStateException("Cannot fit bigger motherboard in smaller cabinet");
             }
 
-            if (psu.suppliedPower() < motherBoard.consumedPower()) {
+            if (psu.suppliedPower() < (motherBoard.consumedPower() + cabinet.consumedPower())) {
                 throw new IllegalStateException("PSU not sufficient for power needs");
             }
 

@@ -8,7 +8,7 @@ import com.scaler.pcbuilder.core.compatibilty.PowerConsumer;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class MotherBoard implements FormFactor, PowerConsumer, CompositePowerConsumer {
+public abstract class MotherBoard implements FormFactor, CompositePowerConsumer {
     @Override
     public abstract FormFactors formFactor();
 
