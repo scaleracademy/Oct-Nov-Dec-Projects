@@ -1,29 +1,50 @@
 package com.scaler.pcbuilder.core.systems;
 
+import com.scaler.pcbuilder.core.components.Cabinet;
+import com.scaler.pcbuilder.core.components.MotherBoard;
+import com.scaler.pcbuilder.core.components.PSU;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public class Tower {
 
-    public boolean fullyConfigured() {
-        /* TODO: add logic to check for minimum components
-                    1. motherboard installed
-                    2. CPU installed
-                    3. RAM installed
-                    4. CPU has internal GPU, or GPU is installed
-                    5. At least 1 storage installed
-                    6. SMPS installed (** at build() stage)
-                        6.a SMPS power >= CPU+GPU power requirement
-         */
-        return false;
-    }
+    private MotherBoard motherBoard;
+    private Cabinet cabinet;
+    private PSU psu;
 
-    public static class Builder {
-        private Tower tower;
 
-        // TODO: installing motherboard to be mandatory first step
-        //          -> replacing motherboard won't be possible
-        //          -> all other installations will first check if mobo exists
+    public static final class Builder {
+        private MotherBoard motherBoard;
+        private Cabinet cabinet;
+        private PSU psu;
+
+        public Builder() {
+        }
+
+
+        public Builder withMotherBoard(MotherBoard motherBoard) {
+            this.motherBoard = motherBoard;
+            return this;
+        }
+
+        public Builder withCabinet(Cabinet cabinet) {
+            this.cabinet = cabinet;
+            return this;
+        }
+
+        public Builder withPsu(PSU psu) {
+            this.psu = psu;
+            return this;
+        }
 
         public Tower build() {
-            // TODO: check fully configured logic here.
+            if (cabinet == null) throw new IllegalStateException("Cannot build tower without a cabinet");
+            if (motherBoard == null) throw new IllegalStateException("Cannot build tower without a motherboard");
+            if (psu == null) throw new IllegalStateException("Cannot build tower without a PSU");
+            Tower tower = new Tower(motherBoard, cabinet, psu);
             return tower;
         }
     }

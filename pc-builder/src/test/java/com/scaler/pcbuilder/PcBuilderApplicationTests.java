@@ -8,6 +8,7 @@ class PcBuilderApplicationTests {
 
 	@Test
 	void contextLoads() {
+//		PcBuilderApplication.main(new String[]{});
 	}
 
 }

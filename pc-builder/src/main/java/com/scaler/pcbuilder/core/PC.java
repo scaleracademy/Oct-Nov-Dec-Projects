@@ -26,19 +26,11 @@ public class PC {
         List<Peripheral> peripherals;
 
         public Builder withTower(Tower tower) {
-
-            if (!tower.fullyConfigured()) {
-                throw new IllegalStateException("Trying to add a tower not fully configured");
-            }
             this.tower = tower;
             return this;
         }
 
         public Builder withKVM(KVM kvm) {
-            if (!kvm.fullyConfigured()) {
-                throw new IllegalStateException("Trying to add a kvm not fully configured");
-            }
-
             this.kvm = kvm;
             return this;
         }

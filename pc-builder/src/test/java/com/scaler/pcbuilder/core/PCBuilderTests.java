@@ -1,6 +1,6 @@
-package com.scaler.pcbuilder.cli;
+package com.scaler.pcbuilder.core;
 
-import com.scaler.pcbuilder.core.PC;
+
 import com.scaler.pcbuilder.core.components.Cabinet;
 import com.scaler.pcbuilder.core.components.MotherBoard;
 import com.scaler.pcbuilder.core.components.PSU;
@@ -8,35 +8,20 @@ import com.scaler.pcbuilder.core.peripherals.Display;
 import com.scaler.pcbuilder.core.peripherals.Keyboard;
 import com.scaler.pcbuilder.core.systems.KVM;
 import com.scaler.pcbuilder.core.systems.Tower;
-import org.springframework.shell.standard.ShellComponent;
-import org.springframework.shell.standard.ShellMethod;
+import org.junit.jupiter.api.Test;
 
-@ShellComponent
-public class PCBuilderCLI {
+public class PCBuilderTests {
 
-    @ShellMethod("Provide help about this project")
-    public String build() {
-
+    @Test
+    void canCreateBasicPCWithBuilder() {
         var pcBuilder = new PC.Builder()
-                .withKVM(new KVM.Builder()
-                        .withDisplay(new Display())
-                        .withKeyboard(new Keyboard())
-                        .build()
-                )
+                .withKVM(new KVM.Builder().withKeyboard(new Keyboard()).withDisplay(new Display()).build())
                 .withTower(new Tower.Builder()
                         .withCabinet(new Cabinet())
                         .withMotherBoard(new MotherBoard())
                         .withPsu(new PSU())
                         .build()
                 );
-
-        var pc1 = pcBuilder.build();
-        var pc2 = pcBuilder.build();
-
-        System.out.println(pc1 == pc2);
-
-        return "Congrats PC is build";
-
-
+        var pc = pcBuilder.build();
     }
 }
