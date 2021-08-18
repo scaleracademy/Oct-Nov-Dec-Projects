@@ -27,7 +27,7 @@ public class PCBuilderCLI {
                 .withTower(new Tower.Builder()
                         .withCabinet(Cabinet.create(FormFactors.ATX))
                         .withMotherBoard(MotherBoard.create(FormFactors.ATX))
-                        .withPsu(new PSU())
+                        .withPsu(PSU.create(500))
                         .build()
                 );
 

@@ -1,4 +1,15 @@
 package com.scaler.pcbuilder.core.components;
 
-public class PSU {
+import com.scaler.pcbuilder.core.compatibilty.PowerSupplier;
+
+public abstract class PSU implements PowerSupplier {
+    
+    public static PSU create(int capacity) {
+        return new PSU() {
+            @Override
+            public int suppliedPower() {
+                return capacity;
+            }
+        };
+    }
 }

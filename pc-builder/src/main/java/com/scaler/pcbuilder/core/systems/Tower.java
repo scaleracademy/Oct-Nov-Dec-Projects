@@ -54,6 +54,10 @@ public class Tower {
                 throw new IllegalStateException("Cannot fit bigger motherboard in smaller cabinet");
             }
 
+            if (psu.suppliedPower() < motherBoard.consumedPower()) {
+                throw new IllegalStateException("PSU not sufficient for power needs");
+            }
+
             Tower tower = new Tower(motherBoard, cabinet, psu);
             return tower;
         }
