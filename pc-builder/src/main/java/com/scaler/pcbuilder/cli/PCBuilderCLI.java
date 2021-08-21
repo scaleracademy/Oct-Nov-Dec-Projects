@@ -1,5 +1,6 @@
 package com.scaler.pcbuilder.cli;
 
+import com.scaler.pcbuilder.cli.shell.InputReader;
 import com.scaler.pcbuilder.core.PC;
 import com.scaler.pcbuilder.core.compatibilty.FormFactors;
 import com.scaler.pcbuilder.core.components.Cabinet;
@@ -9,11 +10,13 @@ import com.scaler.pcbuilder.core.peripherals.Display;
 import com.scaler.pcbuilder.core.peripherals.Keyboard;
 import com.scaler.pcbuilder.core.systems.KVM;
 import com.scaler.pcbuilder.core.systems.Tower;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
 @ShellComponent
 public class PCBuilderCLI {
+    @Autowired InputReader inputReader;
 
     @ShellMethod("Provide help about this project")
     public String build() {
