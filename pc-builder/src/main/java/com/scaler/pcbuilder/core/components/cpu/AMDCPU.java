@@ -1,8 +1,9 @@
-package com.scaler.pcbuilder.core.connectors.cpu;
+package com.scaler.pcbuilder.core.components.cpu;
 
+import com.scaler.pcbuilder.core.components.CPU;
 import com.scaler.pcbuilder.core.vendors.ChipVendor;
 import com.scaler.pcbuilder.core.vendors.Vendors;
 
 @Vendors(chip = ChipVendor.AMD)
-public class AM4 extends CPUSocket {
+public class AMDCPU extends CPU {
 }

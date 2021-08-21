@@ -1,4 +1,4 @@
 package com.scaler.pcbuilder.core.components;
 
-public class CPU {
+public abstract class CPU {
 }
