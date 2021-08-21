@@ -15,7 +15,7 @@ public class TowerBuilderTests {
         var tower = new Tower.Builder()
                 .withCabinet(Cabinet.create(FormFactors.ATX))
                 .withMotherBoard(MotherBoard.create(FormFactors.ATX))
-                .withPsu(new PSU())
+                .withPsu(PSU.create(500))
                 .build();
 
     }
@@ -37,7 +37,7 @@ public class TowerBuilderTests {
         try {
             var tower = new Tower.Builder()
                     .withMotherBoard(MotherBoard.create(FormFactors.ATX))
-                    .withPsu(new PSU())
+                    .withPsu(PSU.create(500))
                     .build();
         } catch (IllegalStateException ise) {
             assertEquals("Cannot build tower without a cabinet", ise.getMessage());
@@ -51,7 +51,7 @@ public class TowerBuilderTests {
             var tower = new Tower.Builder()
                     .withCabinet(Cabinet.create(FormFactors.microATX))
                     .withMotherBoard(MotherBoard.create(FormFactors.ATX))
-                    .withPsu(new PSU())
+                    .withPsu(PSU.create(500))
                     .build();
         } catch (IllegalStateException ise) {
             assertEquals("Cannot fit bigger motherboard in smaller cabinet", ise.getMessage());
