@@ -1,34 +1,60 @@
-plugins {
-	id 'org.springframework.boot' version '2.5.3'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id "io.freefair.lombok" version "6.1.0"
-	id 'java'
-}
+buildscript {
+	ext {
+		springVersion = "2.5.3"
+		springDepsVersion = "1.0.11.RELEASE"
+		junitVersion = "5.7.2"
+		lombokVersion= "6.1.0"
+	}
 
-group = 'com.scaler'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
+	repositories {
+		google()
+		mavenCentral()
 	}
 }
 
-repositories {
-	mavenCentral()
+plugins {
+	id 'org.springframework.boot' version "$springVersion"
+	id 'io.spring.dependency-management' version "$springDepsVersion"
+	id "io.freefair.lombok" version "$lombokVersion"
+	id 'java'
 }
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.shell:spring-shell-starter:2.0.1.RELEASE'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+allprojects {
+	apply plugin: "java"
+	apply plugin: "io.spring.dependency-management"
+	apply plugin: "io.freefair.lombok"
+
+	group = 'com.scaler'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = '11'
+
+	repositories {
+		google()
+		mavenCentral()
+	}
+
+	dependencies {
+		testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+		testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+	}
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+	}
+
+	bootJar {
+		enabled = false
+	}
+
+
+	test {
+		useJUnitPlatform()
+	}
+
+
 }
 
-test {
-	useJUnitPlatform()
-}
+
