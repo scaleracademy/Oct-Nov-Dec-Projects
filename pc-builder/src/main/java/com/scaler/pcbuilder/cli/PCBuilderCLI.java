@@ -2,7 +2,7 @@ package com.scaler.pcbuilder.cli;
 
 import com.scaler.pcbuilder.cli.shell.InputReader;
 import com.scaler.pcbuilder.core.PC;
-import com.scaler.pcbuilder.core.compatibilty.FormFactors;
+import com.scaler.pcbuilder.core.compatibility.FormFactors;
 import com.scaler.pcbuilder.core.components.Cabinet;
 import com.scaler.pcbuilder.core.components.MotherBoard;
 import com.scaler.pcbuilder.core.components.PSU;

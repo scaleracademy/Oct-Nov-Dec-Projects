@@ -1,6 +1,6 @@
 package com.scaler.pcbuilder.core.components;
 
-import com.scaler.pcbuilder.core.compatibilty.PowerSupplier;
+import com.scaler.pcbuilder.core.compatibility.PowerSupplier;
 
 public abstract class PSU implements PowerSupplier {
     

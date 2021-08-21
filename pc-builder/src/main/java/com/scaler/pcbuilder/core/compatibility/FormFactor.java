@@ -1,4 +1,4 @@
-package com.scaler.pcbuilder.core.compatibilty;
+package com.scaler.pcbuilder.core.compatibility;
 
 public interface FormFactor {
     FormFactors formFactor();

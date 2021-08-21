@@ -1,6 +1,6 @@
 package com.scaler.pcbuilder.core.systems;
 
-import com.scaler.pcbuilder.core.compatibilty.FormFactors;
+import com.scaler.pcbuilder.core.compatibility.FormFactors;
 import com.scaler.pcbuilder.core.components.Cabinet;
 import com.scaler.pcbuilder.core.components.MotherBoard;
 import com.scaler.pcbuilder.core.components.PSU;

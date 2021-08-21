@@ -1,9 +1,9 @@
 package com.scaler.pcbuilder.core.components;
 
-import com.scaler.pcbuilder.core.compatibilty.CompositePowerConsumer;
-import com.scaler.pcbuilder.core.compatibilty.FormFactor;
-import com.scaler.pcbuilder.core.compatibilty.FormFactors;
-import com.scaler.pcbuilder.core.compatibilty.PowerConsumer;
+import com.scaler.pcbuilder.core.compatibility.CompositePowerConsumer;
+import com.scaler.pcbuilder.core.compatibility.FormFactor;
+import com.scaler.pcbuilder.core.compatibility.FormFactors;
+import com.scaler.pcbuilder.core.compatibility.PowerConsumer;
 
 import java.util.Arrays;
 import java.util.List;
